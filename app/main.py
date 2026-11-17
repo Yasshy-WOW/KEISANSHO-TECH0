@@ -61,20 +61,26 @@ def get_dq(scope: Literal["base", "company", "all"] = Query("base")):
 
 
 class SiteFiles(StaticFiles):
-    """data*.js（MySQL に入れる元データ）は配信しない。"""
+    """画面のファイルを配信する。
+
+    - Cache-Control: no-cache … ブラウザが毎回サーバーに更新を確認する（デプロイ後に古い JS が使われないように）
+    - data*.js（MySQL に入れる元データ）は配信しない
+    """
 
     async def get_response(self, path: str, scope):
         if Path(path).name.startswith("data") and path.endswith(".js"):
             raise HTTPException(status_code=404)
-        return await super().get_response(path, scope)
+        response = await super().get_response(path, scope)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
 
 
 @app.get("/", include_in_schema=False)
 @app.get("/index.html", include_in_schema=False)
 def top():
-    return FileResponse(ROOT / "index.html")
+    return FileResponse(ROOT / "index.html", headers={"Cache-Control": "no-cache"})
 
 
 app.mount("/assets", SiteFiles(directory=ROOT / "assets"), name="assets")
-app.mount("/admin", StaticFiles(directory=ROOT / "admin", html=True), name="admin")
-app.mount("/company", StaticFiles(directory=ROOT / "company", html=True), name="company")
+app.mount("/admin", SiteFiles(directory=ROOT / "admin", html=True), name="admin")
+app.mount("/company", SiteFiles(directory=ROOT / "company", html=True), name="company")

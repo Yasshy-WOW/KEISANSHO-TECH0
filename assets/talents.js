@@ -34,8 +34,7 @@
   function head() {
     const tab = (id, label) => '<button type="button" role="tab" class="tabbtn" id="tab-' + id + '" aria-controls="panel"' +
       ' aria-selected="' + (state.tab === id) + '" tabindex="' + (state.tab === id ? 0 : -1) + '" data-act="tab" data-val="' + id + '">' + label + '</button>';
-    return '<div class="stack" style="gap:4px"><h1>人材データバンク</h1>' +
-      '<span class="sub">参加大企業の登録人材のスコア平均（デジタルスキル標準 ver.2.0 の共通スキルリスト準拠）｜' + esc(D.meta.asOf) + '｜' + esc(D.meta.note) + '</span></div>' +
+    return '<div class="stack" style="gap:4px"><h1>人材データバンク</h1></div>' +
       '<div class="tabbar" role="tablist" aria-label="表示の切り替え">' + tab('all', '登録人材全体') + tab('ent', '企業別') + '</div>';
   }
 
@@ -46,17 +45,13 @@
       '<span><svg class="lg" viewBox="0 0 28 12" aria-hidden="true"><line x1="1" y1="6" x2="27" y2="6" class="rd-now"/><circle cx="14" cy="6" r="4" class="rd-now-pt"/></svg>' + (cmp ? '選んだ企業の平均' : '登録人材全体の平均') + '（丸）</span>' +
       '<span class="muted">目盛り：d（内側）〜 a（外側）</span></div>';
   }
-  function rulesNote(total) {
-    return '<span class="sub">アセスメント結果（全員が全項目を評価）をもとに、各分類の項目の平均水準を対象者全員で平均した値です（a=4・b=3・c=2・d=1）。ロールによる区別はしていません。</span>' +
-      '<span class="sub">「最高点 対象人数/母数」：その分類のすべての項目が最高評価 a（分類の平均4.0）の人の数／母数（対象者 ' + total + '名）。</span>';
-  }
   const label = (s) => '平均 ' + s.avgNow.toFixed(1) + '｜最高点 ' + s.nTop + '/' + s.total + '名';
 
   // ---- タブ1：登録人材全体 ----
   function allPanel() {
     return '<section class="card lg stack" style="gap:12px">' +
-      '<div class="between"><h2 style="font-size:18px">登録人材全体のスキル水準</h2><span class="sub">対象：' + ENTS.length + '社・' + people.length + '名｜11分類・評価61項目</span></div>' +
-      rulesNote(people.length) + legend(false) +
+      '<div class="between"><h2 style="font-size:18px">登録人材全体のスキル水準</h2></div>' +
+      legend(false) +
       '<div class="radar-wrap">' + radar(ALL, null, { label, nowLabel: '登録人材全体の平均', noReq: true }) + '</div>' +
       '<div class="stack" style="gap:6px"><h3 class="title-ink">参加企業（' + ENTS.length + '社：東証の大分類' + D.sectors.length + '分類×' + Math.round(ENTS.length / D.sectors.length) + '社）</h3>' + entTable(ENTS) + '</div>' +
     '</section>';
@@ -89,9 +84,7 @@
     // 企業名だけを表示する（業態の括弧書きは出さない。業種は表の列にある）
     const title = list.length === 1 ? list[0].id : list.length + '社';
     return '<section class="card lg stack" style="gap:12px" aria-label="選んだ企業のスキル水準">' +
-      '<div class="between"><h2 style="font-size:18px">' + esc(title) + ' のスキル水準</h2><span class="sub">対象：' + list.length + '社・' + ps.length + '名｜11分類・評価61項目</span></div>' +
-      rulesNote(ps.length) +
-      (list.length > 1 ? '<span class="sub">複数の企業が当てはまるときは、該当企業の登録人材全員をまとめて平均します（人数の多い企業の影響が大きくなります）。</span>' : '') +
+      '<div class="between"><h2 style="font-size:18px">' + esc(title) + ' のスキル水準</h2></div>' +
       legend(true) +
       '<div class="radar-wrap">' + radar(stats, null, { label, nowLabel: '選んだ企業の平均', reqLabel: '登録人材全体の平均' }) + '</div>' +
       '<div class="stack" style="gap:6px"><h3 class="title-ink">該当企業（' + list.length + '社）</h3>' + entTable(list) + '</div>' +
