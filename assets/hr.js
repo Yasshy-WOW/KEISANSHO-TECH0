@@ -77,8 +77,8 @@
   function filters() {
     return '<div class="filters" role="search" aria-label="従業員の絞り込み">' +
       '<label class="fld"><span class="sub">部署</span><select id="f-dept">' +
-        '<option value="all">すべての部署（' + DEPTS.length + '部署）</option>' +
-        DEPTS.map((d) => '<option value="' + esc(d[0]) + '"' + (state.dept === d[0] ? ' selected' : '') + '>' + esc(d[0]) + '（' + d[1] + '名）</option>').join('') +
+        '<option value="all">すべての部署</option>' +
+        DEPTS.map((d) => '<option value="' + esc(d[0]) + '"' + (state.dept === d[0] ? ' selected' : '') + '>' + esc(d[0]) + '</option>').join('') +
       '</select></label>' +
       '<label class="fld"><span class="sub">氏名・社員ID</span><input id="f-q" type="search" value="' + esc(state.q) + '" placeholder="例：佐藤、TB-1001" autocomplete="off"></label>' +
       '<span class="sub" id="f-count" aria-live="polite"></span>' +
