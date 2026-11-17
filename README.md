@@ -6,8 +6,33 @@
 
 ## 見かた
 
-- `index.html` をブラウザで開くだけで動きます（サーバー不要）。
-- GitHub Pages で公開している場合は、そのURLを開いてください。
+画面のデータは、バックエンド（Python / FastAPI）が MySQL から読んで返します。HTML をブラウザで直接開くだけでは表示されないので、サーバーを起動してください。
+
+- 公開先（Azure App Service）：https://jissen-dx-quest.azurewebsites.net
+- 構成とデプロイの手順：[デプロイ計画.md](デプロイ計画.md)
+
+### 手元で動かす
+
+Python 3.11 と Node.js が必要です。
+
+```
+pip install -r requirements.txt
+copy .env.example .env        # .env に DB の接続情報を書く（GitHub には上がりません）
+python -m db.seed             # assets/data*.js の内容をデータベースに入れる（初回とデータを変えたとき）
+uvicorn app.main:app --reload # http://localhost:8000 を開く
+```
+
+MySQL を使わずに確認するときは、`.env` に `DATABASE_URL=sqlite:///local.db` と書くと SQLite を使います。
+
+### API
+
+| URL | 内容 |
+|---|---|
+| `/api/dq?scope=base` | マスタ・クエスト・従来の登録人材（① クエスト管理） |
+| `/api/dq?scope=company` | 上に加えて X社の社員（企業ポータル） |
+| `/api/dq?scope=all` | すべての登録人材（② 人材データバンク） |
+| `/api/health` | データベースに接続できるかの確認 |
+| `/api/docs` | API の説明（自動生成） |
 
 ## 画面
 
@@ -25,8 +50,12 @@
 index.html     トップページ
 admin/         事務局サイト
 company/       企業ポータル（大企業人事部）
+app/           バックエンド（FastAPI）。画面と API を配信する
+db/seed.py     data*.js の内容を MySQL に入れるスクリプト
+requirements.txt  Python のライブラリ
 assets/
-  data.js      マスタとサンプルデータ（ここを書き換えると画面に反映）
+  loader.js    API からデータを読み込んで画面のプログラムを動かす
+  data.js      マスタとサンプルデータ（MySQL に入れる元データ。書き換えたら `python -m db.seed` を実行すると画面に反映）
   data-staff.js X社の追加社員195名（企業ポータルと人材データバンクで読み込む）
   data-others.js X社以外の99社の登録人材（人材データバンクだけで読み込む。参加大企業は東証の大分類10分類×10社）
   common.js    共通の計算と表示部品
@@ -34,6 +63,7 @@ assets/
   その他       各画面の処理
 tools/
   generate-staff.js  data-staff.js と data-others.js を作り直すスクリプト（`node tools/generate-staff.js`、Node.js が必要）
+  export-json.js     data*.js を JSON にする（db/seed.py が使う）
 ```
 
-外部ライブラリは使っていません（フォントのみ Google Fonts）。
+画面では外部ライブラリを使っていません（フォントのみ Google Fonts）。

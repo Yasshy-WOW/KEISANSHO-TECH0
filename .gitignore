@@ -1,0 +1,10 @@
+# 接続情報（パスワード）は GitHub に上げない
+.env
+# 手元の確認用データベース
+*.db
+local*.sqlite
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
