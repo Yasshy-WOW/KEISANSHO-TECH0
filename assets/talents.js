@@ -43,7 +43,7 @@
     return '<div class="legend">' +
       (cmp ? '<span><svg class="lg" viewBox="0 0 28 12" aria-hidden="true"><line x1="1" y1="6" x2="27" y2="6" class="rd-req"/></svg>登録人材全体の平均（破線）</span>' : '') +
       '<span><svg class="lg" viewBox="0 0 28 12" aria-hidden="true"><line x1="1" y1="6" x2="27" y2="6" class="rd-now"/><circle cx="14" cy="6" r="4" class="rd-now-pt"/></svg>' + (cmp ? '選んだ企業の平均' : '登録人材全体の平均') + '（丸）</span>' +
-      '<span class="muted">目盛り：d（内側）〜 a（外側）</span></div>';
+      '</div>';
   }
   const label = (s) => '平均 ' + s.avgNow.toFixed(1) + '｜最高点 ' + s.nTop + '/' + s.total + '名';
 
