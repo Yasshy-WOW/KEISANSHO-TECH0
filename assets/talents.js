@@ -53,13 +53,13 @@
       '<div class="between"><h2 style="font-size:18px">登録人材全体のスキル水準</h2></div>' +
       legend(false) +
       '<div class="radar-wrap">' + radar(ALL, null, { label, nowLabel: '登録人材全体の平均', noReq: true }) + '</div>' +
-      '<div class="stack" style="gap:6px"><h3 class="title-ink">参加企業（' + ENTS.length + '社：東証の大分類' + D.sectors.length + '分類×' + Math.round(ENTS.length / D.sectors.length) + '社）</h3>' + entTable(ENTS) + '</div>' +
+      '<div class="stack" style="gap:6px"><h3 class="title-ink">参加企業（' + ENTS.length + '社：業種' + D.sectors.length + '分類×' + Math.round(ENTS.length / D.sectors.length) + '社）</h3>' + entTable(ENTS) + '</div>' +
     '</section>';
   }
 
   function entTable(list) {
     // 行が多いときは高さを抑えてスクロール（見出し行は固定）
-    return '<div class="scroll inner' + (list.length > 12 ? ' tall' : '') + '"><table style="min-width:560px"><thead><tr><th>企業</th><th>業種（東証の大分類）</th><th class="num">売上高</th><th class="num">登録人材</th></tr></thead><tbody>' +
+    return '<div class="scroll inner' + (list.length > 12 ? ' tall' : '') + '"><table style="min-width:560px"><thead><tr><th>企業</th><th>業種</th><th class="num">売上高</th><th class="num">登録人材</th></tr></thead><tbody>' +
       list.map((e) => '<tr><td class="strong">' + esc(e.id) + '</td><td>' + esc(D.sectors[e.sector]) + '</td><td class="num">' + yen(e.revenue) + '</td><td class="num">' + e.n + '名</td></tr>').join('') +
       '</tbody></table></div>';
   }
@@ -70,7 +70,7 @@
     return '<div class="filters" role="search" aria-label="企業の選択">' +
         '<label class="fld"><span class="sub">売上</span><select id="f-band">' + opt('all', 'すべての売上', state.band === 'all') +
           D.revenueBands.map((b, i) => opt(String(i), b[0], state.band === String(i))).join('') + '</select></label>' +
-        '<label class="fld"><span class="sub">業種（東証の大分類）</span><select id="f-sector">' + opt('all', 'すべての業種（10分類）', state.sector === 'all') +
+        '<label class="fld"><span class="sub">業種</span><select id="f-sector">' + opt('all', 'すべての業種（10分類）', state.sector === 'all') +
           D.sectors.map((s, i) => opt(String(i), s, state.sector === String(i))).join('') + '</select></label>' +
       '</div><div id="ent-result"></div>';
   }
