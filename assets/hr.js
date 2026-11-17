@@ -47,7 +47,6 @@
       (noReq ? '' : '<span><svg class="lg" viewBox="0 0 28 12" aria-hidden="true"><line x1="1" y1="6" x2="27" y2="6" class="rd-req"/></svg>ロールの要求（公式の重要度・破線）</span>') +
       (pre ? '<span><svg class="lg" viewBox="0 0 28 12" aria-hidden="true"><line x1="1" y1="6" x2="27" y2="6" class="rd-pre"/><rect x="10" y="2" width="8" height="8" class="rd-pre-pt"/></svg>派遣前（四角）</span>' : '') +
       '<span><svg class="lg" viewBox="0 0 28 12" aria-hidden="true"><line x1="1" y1="6" x2="27" y2="6" class="rd-now"/><circle cx="14" cy="6" r="4" class="rd-now-pt"/></svg>' + nowLabel + '（丸）</span>' +
-      '<span class="muted">目盛り：d（内側）〜 a（外側）</span>' +
     '</div>';
   }
 
