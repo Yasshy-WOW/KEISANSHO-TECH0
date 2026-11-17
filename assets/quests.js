@@ -69,11 +69,9 @@
 
       '<article class="card lg">' +
         '<div class="between" style="align-items:flex-start">' +
-          '<div class="stack" style="gap:4px;flex:1 1 360px"><h2 style="font-size:18px">必要なスキル</h2>' +
-            '<span class="sub">デジタルスキル標準 ver.2.0 の共通スキルリスト（5カテゴリー・13サブカテゴリー・67項目）。推薦ロールの公式スキルマッピングの重要度をそのまま使い、ロールが複数の場合は項目ごとに高い方を採用しています。</span></div>' +
+          '<div class="stack" style="gap:4px;flex:1 1 360px"><h2 style="font-size:18px">必要なスキル</h2></div>' +
           '<div class="soft stack" style="gap:2px;flex:0 1 320px"><span class="sub">実績データ</span>' +
-            '<span style="font-weight:500">類似クエスト ' + q.cases + '件（成功 ' + q.success + '件）</span>' +
-            '<span class="sub">成功事例が蓄積されたら、必要スキルの補正に使う予定です（現在は補正なし）。</span></div>' +
+            '<span style="font-weight:500">類似クエスト ' + q.cases + '件（成功 ' + q.success + '件）</span></div>' +
         '</div>' +
         '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px">' +
           counts.map((c) => '<div class="box row" style="gap:10px;padding:8px 12px">' + lv(c.k) +
@@ -85,7 +83,7 @@
         '<div class="scroll inner"><table style="min-width:720px"><thead><tr><th>スキル項目</th>' + head + '<th class="c" style="width:110px">必要スキル</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
         '<div class="box stack"><h3>パーソナルスキル <span class="small muted" style="font-weight:500">｜全ロール共通の重要度 z：役割や状況に応じた実践力が必要</span></h3>' +
           '<div class="row">' + PERSONAL.map((it) => '<span class="row box" style="gap:6px;padding:4px 10px;font-size:13px">' + lv('z', { sm: true }) + esc(it[1]) + '<span class="xs muted">（' + esc(D.subs[it[0]][1]) + '）</span></span>').join('') + '</div>' +
-          '<span class="sub">点数化はせず、選考の面談で確認します（本プロジェクトの運用）。</span></div>' +
+          '</div>' +
         legend(['a', 'b', 'c', 'd', 'z'], '重要度（公式の凡例）') +
       '</article>';
   }

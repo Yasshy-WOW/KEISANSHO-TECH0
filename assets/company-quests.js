@@ -58,7 +58,6 @@
             '<div class="box stack" style="gap:4px"><span class="xs muted">類型：' + esc(typeName(r)) + '</span><strong>' + esc(roleName(r)) + '</strong>' +
               '<span class="small" style="color:var(--ink-2)">' + esc(q.reasons[i]) + '</span></div>').join('') +
           '</div>' +
-          '<span class="sub">ロールはデジタルスキル標準 ver.2.0 のものです。中小企業の悩みを事務局がヒアリングし、課題の解決に向くロールを推薦しています。</span>' +
         '</div>' +
       '</article>';
   }

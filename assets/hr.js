@@ -36,8 +36,7 @@
   function head() {
     const tab = (id, label) => '<button type="button" role="tab" class="tabbtn" id="tab-' + id + '" aria-controls="panel"' +
       ' aria-selected="' + (state.tab === id) + '" tabindex="' + (state.tab === id ? 0 : -1) + '" data-act="tab" data-val="' + id + '">' + label + '</button>';
-    return '<div class="stack" style="gap:4px"><h1>自社人材の育成状況</h1>' +
-      '<span class="sub">' + esc(D.meta.asOf) + '｜出典：' + esc(D.meta.source) + '｜' + esc(D.meta.note) + '</span></div>' +
+    return '<div class="stack" style="gap:4px"><h1>自社人材の育成状況</h1></div>' +
       '<div class="tabbar" role="tablist" aria-label="表示の切り替え">' +
         tab('all', '会社全体') + tab('emp', '従業員') +
       '</div>';
@@ -63,9 +62,7 @@
     const stats = companyStats();
     const label = (s) => '平均 ' + s.avgNow.toFixed(1) + '｜最高点 ' + s.nTop + '/' + emps.length + '名';
     return '<section class="card lg stack" style="gap:12px">' +
-      '<div class="between"><h2 style="font-size:18px">会社全体のスキル水準</h2><span class="sub">対象：登録社員 ' + emps.length + '名（' + DEPTS.length + '部署）｜11分類・評価61項目</span></div>' +
-      '<span class="sub">アセスメント結果（全員が全項目を評価）をもとに、各分類の項目の平均水準を登録社員全員で平均した値です（a=4・b=3・c=2・d=1）。ロールによる区別はしていません。</span>' +
-      '<span class="sub">「最高点 対象人数/母数」：その分類のすべての項目が最高評価 a（分類の平均4.0）の社員の数／母数（登録社員 ' + emps.length + '名）。</span>' +
+      '<div class="between"><h2 style="font-size:18px">会社全体のスキル水準</h2></div>' +
       legend(false, '全社員の平均', true) +
       '<div class="radar-wrap">' + radar(stats, null, { label, nowLabel: '全社員の平均', noReq: true }) + '</div>' +
     '</section>';
@@ -122,7 +119,6 @@
         '<span class="sub">充足度 <strong style="color:var(--ink)">' + rateText(e) + '</strong></span></div>' +
       legend(!!e.pre, '現在') +
       '<div class="radar-wrap">' + radar(e.stats, href, { pre: !!e.pre }) + '</div>' +
-      '<span class="sub">ロールはアセスメント結果から判定しています（17ロールのうち、充足度が最も高いロール）。分類名をクリックすると、その分類のスキル項目ごとの評価を表示します。</span>' +
     '</section>';
   }
 

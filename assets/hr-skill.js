@@ -39,7 +39,6 @@
         '<span class="tag ' + (s.judge === 'ok' ? 't-strong' : s.judge === 'ng' ? 't-warn' : 't-gray') + '">判定：' + esc(jd) + '</span></div>' +
       '<div class="scroll inner"><table style="min-width:600px"><thead><tr><th>スキル項目</th><th class="c small" style="font-weight:500">ロールの重要度<br>（公式）</th>' +
         (e.pre ? '<th class="c">派遣前</th>' : '') + '<th class="c">現在</th><th>判定</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      '<span class="sub">「重点」は本人ロールの重要度が a・b の項目です（枠で強調）。分類の判定は、重点項目をすべて達成しているかで決めます。</span>' +
       legend(['a', 'b', 'c', 'd'], '重要度（公式の凡例）／個人評価も同じ水準で判定') +
     '</section>';
 })();
