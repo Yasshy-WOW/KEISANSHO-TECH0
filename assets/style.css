@@ -43,7 +43,9 @@ h2 { font-size: 16px; }
 h3 { font-size: 14px; }
 
 /* ---- header ---- */
-.hdr { background: var(--brand); color: #FFFFFF; }
+/* 上のバーは常に表示（スクロールしても画面の上に残す） */
+.hdr { background: var(--brand); color: #FFFFFF; position: sticky; top: 0; z-index: 20; }
+html { scroll-padding-top: 80px; }
 .hdr-in {
   max-width: 1360px; margin: 0 auto; padding: 0 24px; min-height: 60px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 32px;
@@ -54,7 +56,8 @@ h3 { font-size: 14px; }
 .nav a { color: #FFFFFF; text-decoration: none; padding: 8px 16px; border-radius: 6px; }
 .nav a[aria-current="page"] { background: #FFFFFF; color: var(--brand); font-weight: 700; }
 .hdr-meta { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 12px; color: #CFE6EA; }
-.who { background: #FFFFFF; color: var(--brand); font-weight: 700; padding: 2px 10px; border-radius: 999px; }
+/* 利用者の表示（事務局／X社 人事部）。見ている人が分かるよう大きめに */
+.who { background: #FFFFFF; color: var(--brand); font-weight: 700; font-size: 15px; letter-spacing: 0.04em; padding: 5px 16px; border-radius: 999px; }
 .hdr.light { background: var(--surface); color: var(--ink); border-bottom: 1px solid var(--line); }
 .hdr.light .brand { color: var(--brand); }
 .hdr.light .brand small { color: var(--muted); opacity: 1; }
@@ -324,7 +327,7 @@ svg.lg { width: 28px; height: 12px; overflow: visible; flex: none; }
 /* 一覧は高さを抑えてスクロール。見出し行は固定 */
 .scroll.tall { max-height: 440px; overflow-y: auto; }
 .scroll.tall thead th { position: sticky; top: 0; background: var(--bg); z-index: 1; }
-#emp-detail { scroll-margin-top: 16px; }
+#emp-detail { scroll-margin-top: 80px; }
 
 /* ---- タブ（企業ポータル：会社全体／従業員） ---- */
 .tabbar { display: flex; gap: 4px; border-bottom: 2px solid var(--line); }
