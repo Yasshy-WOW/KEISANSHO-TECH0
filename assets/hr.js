@@ -54,7 +54,7 @@
   // 全員がデジタルスキル標準の全項目のアセスメントを受けている前提で、ロールに関係なく全社員を同じ物差しで集計する。
   // 分類ごとに、各社員の分類内の平均水準（a=4〜d=1）を全社員で平均する
   // あわせて、分類内の全項目が最高評価 a（平均4.0）の社員数（最高点の人数）を数える。母数は登録社員全員
-  // 集計の規則は common.js の groupStats（事務局の人材データバンクと共通）
+  // 集計の規則は common.js の groupStats（事務局のDX人材データバンクと共通）
   function companyStats() { return groupStats(emps); }
 
   function companyPanel() {

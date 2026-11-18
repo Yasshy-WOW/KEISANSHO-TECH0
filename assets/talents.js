@@ -1,4 +1,4 @@
-// ② 人材データバンク（事務局）
+// ② DX人材データバンク（事務局）
 // タブ1「登録人材全体」：参加大企業すべての登録人材のスコア平均（レーダーチャート）
 // タブ2「企業別」：売上と業種（東証の大分類10分類）で企業を選び、その企業の登録人材のスコア平均（レーダーチャート）
 // スコアの集計規則は企業ポータル（③ 会社全体）と同じ（common.js の groupStats）
@@ -34,7 +34,7 @@
   function head() {
     const tab = (id, label) => '<button type="button" role="tab" class="tabbtn" id="tab-' + id + '" aria-controls="panel"' +
       ' aria-selected="' + (state.tab === id) + '" tabindex="' + (state.tab === id ? 0 : -1) + '" data-act="tab" data-val="' + id + '">' + label + '</button>';
-    return '<div class="stack" style="gap:4px"><h1>人材データバンク</h1></div>' +
+    return '<div class="stack" style="gap:4px"><h1>DX人材データバンク</h1></div>' +
       '<div class="tabbar" role="tablist" aria-label="表示の切り替え">' + tab('all', '登録人材全体') + tab('ent', '企業別') + '</div>';
   }
 

@@ -7,7 +7,7 @@ from . import models as m
 # 画面ごとに読み込む人材の範囲（今までの <script src="data*.js"> の読み込み方と同じ）
 #   base    … data.js だけ（① クエスト管理）
 #   company … data.js ＋ data-staff.js（企業ポータル）
-#   all     … 3ファイルすべて（② 人材データバンク）
+#   all     … 3ファイルすべて（② DX人材データバンク）
 SCOPES = {"base": 0, "company": 1, "all": 2}
 
 SETTING_KEYS = ("rules", "sectors", "revenueBands", "meta", "selfQ")

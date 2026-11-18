@@ -1,6 +1,6 @@
 // 登録人材のサンプルデータ生成（固定シードで再現可能）
-// ・X社：既存5名＋追加195名＝200名 → assets/data-staff.js（企業ポータルと人材データバンクで読み込む）
-// ・X社以外の99社：1社10名（Y社・Z社は既存の人を含めて10名）→ assets/data-others.js（人材データバンクだけで読み込む）
+// ・X社：既存5名＋追加195名＝200名 → assets/data-staff.js（企業ポータルとDX人材データバンクで読み込む）
+// ・X社以外の99社：1社10名（Y社・Z社は既存の人を含めて10名）→ assets/data-others.js（DX人材データバンクだけで読み込む）
 //   参加大企業は東証の大分類10分類×10社＝100社（data.js の ents）
 const fs = require('fs');
 const path = require('path');
@@ -303,7 +303,7 @@ D.ents.filter((e) => e.id !== 'X社').forEach((e) => {
   }
 });
 const bodyO = '// X社以外の参加大企業99社の登録人材のサンプル（1社10名。Y社・Z社は data.js の既存の人を含めて10名）\n' +
-  '// 氏名・部署・評価・売上はすべて架空のサンプルです。事務局の人材データバンク（admin/talents.html）だけで読み込みます\n' +
+  '// 氏名・部署・評価・売上はすべて架空のサンプルです。事務局のDX人材データバンク（admin/talents.html）だけで読み込みます\n' +
   '// role はアセスメント結果（lv）から判定した値。tools/generate-staff.js で生成\n' +
   'window.DQ.people.push(\n' + others.map((p) => '  ' + JSON.stringify(p)).join(',\n') + '\n);\n';
 fs.writeFileSync(path.join(site, 'assets/data-others.js'), bodyO);
