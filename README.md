@@ -30,7 +30,7 @@ MySQL を使わずに確認するときは、`.env` に `DATABASE_URL=sqlite:///
 |---|---|
 | `/api/dq?scope=base` | マスタ・クエスト・従来の登録人材（① クエスト管理） |
 | `/api/dq?scope=company` | 上に加えて X社の社員（企業ポータル） |
-| `/api/dq?scope=all` | すべての登録人材（② 人材データバンク） |
+| `/api/dq?scope=all` | すべての登録人材（② DX人材データバンク） |
 | `/api/health` | データベースに接続できるかの確認 |
 | `/api/docs` | API の説明（自動生成） |
 
@@ -39,7 +39,7 @@ MySQL を使わずに確認するときは、`.env` に `DATABASE_URL=sqlite:///
 | 入口 | 画面 | 利用者 |
 |---|---|---|
 | `admin/index.html` | ① クエスト管理（課題と必要スキル） | 事務局 |
-| `admin/talents.html` | ② 人材データバンク（登録人材全体／企業別のタブ、レーダーチャート） | 事務局 |
+| `admin/talents.html` | ② DX人材データバンク（登録人材全体／企業別のタブ、レーダーチャート） | 事務局 |
 | `company/index.html` | ③ 自社人材の育成状況（会社全体／従業員のタブ、レーダーチャート） | 大企業の人事部 |
 | `company/skill.html` | ③-2 分類ごとのスキル項目の評価 | 大企業の人事部 |
 | `company/quests.html` | ④ クエスト一覧（大企業向け） | 大企業の人事部 |
@@ -56,8 +56,8 @@ requirements.txt  Python のライブラリ
 assets/
   loader.js    API からデータを読み込んで画面のプログラムを動かす
   data.js      マスタとサンプルデータ（MySQL に入れる元データ。書き換えたら `python -m db.seed` を実行すると画面に反映）
-  data-staff.js X社の追加社員195名（企業ポータルと人材データバンクで読み込む）
-  data-others.js X社以外の99社の登録人材（人材データバンクだけで読み込む。参加大企業は東証の大分類10分類×10社）
+  data-staff.js X社の追加社員195名（企業ポータルとDX人材データバンクで読み込む）
+  data-others.js X社以外の99社の登録人材（DX人材データバンクだけで読み込む。参加大企業は東証の大分類10分類×10社）
   common.js    共通の計算と表示部品
   style.css    見た目
   その他       各画面の処理

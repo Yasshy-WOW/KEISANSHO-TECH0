@@ -1,5 +1,5 @@
 // X社以外の参加大企業99社の登録人材のサンプル（1社10名。Y社・Z社は data.js の既存の人を含めて10名）
-// 氏名・部署・評価・売上はすべて架空のサンプルです。事務局の人材データバンク（admin/talents.html）だけで読み込みます
+// 氏名・部署・評価・売上はすべて架空のサンプルです。事務局のDX人材データバンク（admin/talents.html）だけで読み込みます
 // role はアセスメント結果（lv）から判定した値。tools/generate-staff.js で生成
 window.DQ.people.push(
   {"id":"TB-2001","name":"原田 陽子","ent":"U社","company":"U社（水産）","dept":"経営企画部","years":"入社17年目","role":4,"active":false,"wish":"中小企業の経営管理の高度化","career":[{"from":"2010年4月","dept":"経営企画部 事業管理課","title":"担当"},{"from":"2018年4月","dept":"経営企画部 経営企画課","title":"課長"}],"self":{"type":0,"job":"経営企画","level":4,"on":"2026年9月"},"on":"2026年9月","lv":"ccdbdcabcabbdbbdbddacbccdcaabdacacdddddcbcdcbbcddbdcdcbbddccd","pre":null,"dispatch":null},
