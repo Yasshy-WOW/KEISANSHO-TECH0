@@ -11,7 +11,11 @@
 - 公開先（Azure App Service）：https://jissen-dx-quest.azurewebsites.net
 - 構成とデプロイの手順：[デプロイ計画.md](デプロイ計画.md)
 
-### 手元で動かす
+### 自分のパソコンだけで動かす（ローカル動作版）
+
+[ローカル動作版/](ローカル動作版/) フォルダの `起動.bat` をダブルクリックすると、http://127.0.0.1:8000/ で同じ画面が動きます。MySQL・Azure は使わず、フォルダ内の SQLite（`data/jissen_dx_quest.db`）を使います。必要なのは Python 3.11 以上だけです。詳しくは [ローカル動作版/README.md](ローカル動作版/README.md)。
+
+### 手元で動かす（開発用）
 
 Python 3.11 と Node.js が必要です。
 
